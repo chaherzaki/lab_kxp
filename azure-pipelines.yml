@@ -1,6 +1,6 @@
 
 trigger:
-- main  # ou a branch que você deseja monitorar
+- master  # ou a branch que você deseja monitorar
 
 pool:
   vmImage: 'ubuntu-latest'  # Escolha a imagem de máquina virtual desejada
@@ -18,6 +18,6 @@ steps:
   
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: 'front-end/customer-app'  # Caminho para o diretório de build
+    pathtoPublish: '/front-end/customer-app'  # Caminho para o diretório de build
     artifactName: 'npm-artifact'  # Nome do artefato a ser publicado
   displayName: 'Publicar artefatos de build'
