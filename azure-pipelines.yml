@@ -10,10 +10,11 @@ steps:
   inputs:
     versionSpec: '14.x'  # Versão do Node.js a ser usada
   displayName: 'Instalar o Node.js'
+
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
+    workingDir: '$(Build.SourcesDirectory)/customer-app'
     customCommand: 'run test'
   continueOnError: true
 
