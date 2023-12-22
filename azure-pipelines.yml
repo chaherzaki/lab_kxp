@@ -12,14 +12,19 @@ steps:
   displayName: 'Instalar o Node.js'
 
 - script: |
-    workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
     npm install
-    npm run build
-  displayName: 'Construir o projeto NPM'
+  displayName: 'npm install'
 
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
     customCommand: 'run test'
   continueOnError: true
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '*.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/front-end/customer-app'
+    mergeTestResults: true
+    testRunTitle: 'Publish Test Results'
