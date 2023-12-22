@@ -14,6 +14,7 @@ steps:
 - script: |
     npm install
     npm run build
+    workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
   displayName: 'Construir o projeto NPM'
   
 - task: Npm@1
