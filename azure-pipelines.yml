@@ -18,7 +18,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '$(Build.SourcesDirectory)/lab_kxp'
+    workingDir: '$(Build.SourcesDirectory)/front-end/customer-app/'
     customCommand: 'run test'
   continueOnError: true
 
