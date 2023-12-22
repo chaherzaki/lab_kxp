@@ -11,13 +11,14 @@ steps:
     versionSpec: '14.x'  # Versão do Node.js a ser usada
   displayName: 'Instalar o Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'Construir o projeto NPM'
-  
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '/front-end/customer-app'  # Caminho para o diretório de build
     artifactName: 'npm-artifact'  # Nome do artefato a ser publicado
   displayName: 'Publicar artefatos de build'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'Construir o projeto NPM'
+  
