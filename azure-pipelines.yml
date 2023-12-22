@@ -20,5 +20,4 @@ steps:
 
 - script:
     npm build
-    workingDir:'$(Build.SourcesDirectory)/front-end/customer-app'
   displayName: 'build npm'
