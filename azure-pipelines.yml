@@ -21,3 +21,12 @@ steps:
 - script:
     npm build
   displayName: 'build npm'
+
+- task: Bash@3
+  displayName: Install azcopy
+  inputs:
+    targetType: 'inline'
+    script: |
+      curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+      mkdir $(Agent.ToolsDirectory)/azcopy
+      wget -O $(Agent.ToolsDirectory)/azcopy/azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux
