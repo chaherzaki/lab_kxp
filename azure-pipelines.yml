@@ -17,3 +17,8 @@ steps:
     workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
     verbose:  true
   displayName: 'npm install'
+
+- script:
+    npm build
+    workingDir:'$(Build.SourcesDirectory)/front-end/customer-app'
+  displayName: 'build npm'
