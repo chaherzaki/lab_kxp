@@ -14,12 +14,13 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '/customer-app'
+    workingDir: '/front-end/customer-app'
     customCommand: 'run test'
   continueOnError: true
 
 - script: |
     npm install
+    npm start
     npm run build
   displayName: 'Construir o projeto NPM'
   
