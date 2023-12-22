@@ -30,3 +30,6 @@ steps:
       curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
       mkdir $(Agent.ToolsDirectory)/azcopy
       wget -O $(Agent.ToolsDirectory)/azcopy/azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux
+
+- script: 
+    azcopy cp -r ./build "https://sto23f49v.blob.core.windows.net/teste?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2023-12-23T04:56:25Z&st=2023-12-22T20:56:25Z&spr=https&sig=EuYecfnYmQHGCoyu3oBxAUz7A2b9Z%2BcGd7IbRshC7rI%3D"
