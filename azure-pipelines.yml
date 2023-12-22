@@ -16,9 +16,8 @@ steps:
     npm run build
   displayName: 'Construir o projeto NPM'
   
-- task: Npm@1
+- task: PublishBuildArtifacts@1
   inputs:
-    command: 'custom'
-    workingDir: '/front-end/customer-app'
-    customCommand: 'run test'
-  continueOnError: true
+    pathtoPublish: 'front-end/customer-app'  # Caminho para o diretório de build
+    artifactName: 'npm-artifact'  # Nome do artefato a ser publicado
+  displayName: 'Publicar artefatos de build'
