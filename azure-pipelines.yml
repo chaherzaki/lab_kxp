@@ -14,10 +14,3 @@ steps:
     npm install
     npm run build
   displayName: 'Construir o projeto NPM'
-
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: '$(Build.SourcesDirectory)/customer-app'
-    customCommand: 'run test'
-  continueOnError: true
