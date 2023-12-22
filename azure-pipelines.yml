@@ -17,6 +17,6 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: 'front-end/customer-app'  # Caminho para o diretório de build
+    pathtoPublish: '/customer-app'  # Caminho para o diretório de build
     artifactName: 'npm-artifact'  # Nome do artefato a ser publicado
   displayName: 'Publicar artefatos de build'
