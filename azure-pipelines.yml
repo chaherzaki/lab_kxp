@@ -39,5 +39,4 @@ steps:
     storage: 'https://sto23f49v.blob.core.windows.net/'
     ContainerName: 'teste'
     BlobPrefix: ''
-  name: AzureFileCopy
- 
+  name: AzureFileCopy 
