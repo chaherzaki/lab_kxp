@@ -31,5 +31,16 @@ steps:
       mkdir $(Agent.ToolsDirectory)/azcopy
       wget -O $(Agent.ToolsDirectory)/azcopy/azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux
 
-- script: 
-    azcopy cp "./build" "https://sto23f49v.blob.core.windows.net/teste?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2023-12-26T20:33:09Z&st=2023-12-26T12:33:09Z&spr=https&sig=C2zeQEMU1sKrnPkG65M1arLsow%2B9Avg94i0sDS2I4Ow%3D" --recursive=true
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: 'build'
+    azureSubscription: 'Azure'
+    Destination: 'AzureBlob'
+    storage: 'https://sto23f49v.blob.core.windows.net/'
+    ContainerName: 'teste'
+    BlobPrefix: ''
+  name: AzureFileCopy
+  
+- script: | 
+    echo $(AzureFileCopy.StorageContainerUri)
+    echo $(AzureFileCopy.StorageContainerSasToken)
