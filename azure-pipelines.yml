@@ -42,5 +42,5 @@ steps:
   name: AzureFileCopy
   
 - script: | 
-    echo $(AzureFileCopy.StorageContainerUri)
-    echo $(AzureFileCopy.StorageContainerSasToken)
+    echo $(AzureFileCopy.https://sto23f49v.blob.core.windows.net/teste)
+    echo $(AzureFileCopy.?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2023-12-26T20:33:09Z&st=2023-12-26T12:33:09Z&spr=https&sig=C2zeQEMU1sKrnPkG65M1arLsow%2B9Avg94i0sDS2I4Ow%3D)
