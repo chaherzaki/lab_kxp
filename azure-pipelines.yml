@@ -17,10 +17,12 @@ steps:
     workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
     verbose:  true
   displayName: 'npm install'
-
-- script:
-    npm build
-  displayName: 'build npm'
+  
+- task: Npm@1
+  inputs:
+    command: custom
+    workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
+  displayName: 'npm build'
 
 - task: Bash@3
   displayName: Install azcopy
