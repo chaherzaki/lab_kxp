@@ -35,5 +35,5 @@ steps:
       wget -O $(Agent.ToolsDirectory)/azcopy/azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux
 
 - script: 
-    azcopy copy 'front-end/customer-app/build' 'https://sto23f49v.blob.core.windows.net/$web?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2023-12-26T20:33:09Z&st=2023-12-26T12:33:09Z&spr=https&sig=C2zeQEMU1sKrnPkG65M1arLsow%2B9Avg94i0sDS2I4Ow%3D' --recursive=true
+    azcopy copy 'front-end/customer-app/build/*' 'https://sto23f49v.blob.core.windows.net/$web?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2023-12-26T20:33:09Z&st=2023-12-26T12:33:09Z&spr=https&sig=C2zeQEMU1sKrnPkG65M1arLsow%2B9Avg94i0sDS2I4Ow%3D' --recursive=true
     #ls front-end/customer-app/build
