@@ -22,6 +22,7 @@ steps:
   inputs:
     command: custom
     workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
+    customCommand: 'run-script build --prod'
   displayName: 'npm build'
 
 - task: Bash@3
