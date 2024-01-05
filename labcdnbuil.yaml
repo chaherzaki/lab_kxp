@@ -20,7 +20,12 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az account show
+      # Definindo as variáveis de ambiente para o Storage Account
+      export AZURE_STORAGE_ACCOUNT="storagefate"
+      export AZURE_STORAGE_KEY=$(az storage account keys list --resource-group rg_fate_pgp_dev_01 --account-name storagefate --query "[0].value" -o tsv)
+
+      # Fazendo o upload do arquivo para um contêiner no Storage Account
+      az storage blob upload --container-name $web --file arquivo.txt --name arquivo.txt --account-name $AZURE_STORAGE_ACCOUNT --account-key $AZURE_STORAGE_KEY
 
 - task: Npm@1
   inputs:
