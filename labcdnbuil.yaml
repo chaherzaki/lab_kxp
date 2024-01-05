@@ -1,0 +1,50 @@
+trigger:
+- main
+ 
+pool:
+  vmImage: 'ubuntu-latest'
+ 
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'  # Versão do Node.js a ser usada
+  displayName: 'Instalar o Node.js'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'labservicescdn'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az account show
+
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
+    verbose:  true
+  displayName: 'npm install'
+  
+- task: Npm@1
+  inputs:
+    command: custom
+    workingDir: '$(Build.SourcesDirectory)/front-end/customer-app'
+    customCommand: 'run-script build --prod'
+  displayName: 'npm build'
+
+- task: Bash@3
+  displayName: Install azcopy
+  inputs:
+    targetType: 'inline'
+    script: |
+      curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+      mkdir $(Agent.ToolsDirectory)/azcopy
+      wget -O $(Agent.ToolsDirectory)/azcopy/azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux
+
+- script: 
+    azcopy copy 'front-end/customer-app/build/*' 'https://storagefate.blob.core.windows.net/$web??sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2024-01-05T23:34:01Z&st=2024-01-05T15:34:01Z&spr=https&sig=jRqtE%2Fc68X2OKropoKlDPnR50uASiYZ5vs0a5fUpFFs%3D' --recursive=true
+    #ls front-end/customer-app/build
