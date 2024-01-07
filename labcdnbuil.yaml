@@ -20,13 +20,16 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      # Definindo as variáveis de ambiente para o Storage Account
-      export AZURE_STORAGE_ACCOUNT="storagefate"
-      export AZURE_STORAGE_KEY=$(az storage account keys list --resource-group rg_fate_pgp_dev_01 --account-name storagefate --query "[0].value" -o tsv)
 
-      # Fazendo o upload do arquivo para um contêiner no Storage Account
-      az storage blob upload --file /front-end/customer-app/arquivo.txt --container-name $web --name $web
- 
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: 'front-end/customer-app/arquivo.txt'  # Caminho do arquivo ou pasta a ser copiado
+    azureSubscription: 'labservicescdn'  # Nome da sua assinatura do Azure
+    Destination: 'AzureBlob'  # Tipo de destino (no caso, AzureBlob para o Storage Account)
+    storage: 'storagefate'  # Nome do seu Storage Account
+    ContainerName: '$web'  # Nome do contêiner no Storage Account
+    BlobPrefix: '$web'  # (Opcional) Prefixo do blob no Storage Account
+
 - task: Npm@1
   inputs:
     command: 'install'
