@@ -20,15 +20,16 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
+      az account show
 
 - task: AzureFileCopy@4
   inputs:
-    SourcePath: 'front-end/customer-app/arquivo.txt'  # Caminho do arquivo ou pasta a ser copiado
-    azureSubscription: 'labservicescdn'  # Nome da sua assinatura do Azure
-    Destination: 'AzureBlob'  # Tipo de destino (no caso, AzureBlob para o Storage Account)
-    storage: 'storagefate'  # Nome do seu Storage Account
-    ContainerName: '$web'  # Nome do contêiner no Storage Account
-    BlobPrefix: '$web'  # (Opcional) Prefixo do blob no Storage Account
+    SourcePath: 'front-end/customer-app/arquivo.txt'
+    azureSubscription: 'labservicescdn'
+    Destination: 'AzureBlob'
+    storage: 'storagefate'
+    ContainerName: '$web'
+    BlobPrefix: '$web'
 
 - task: Npm@1
   inputs:
