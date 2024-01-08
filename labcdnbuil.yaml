@@ -36,4 +36,4 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az account show
-      az storage blob directory upload -c '$web' --account-name storagefate -s "front-end/customer-app/build/*" -d '$web' --recursive
+      az storage blob directory upload -c '$web' --account-name storagefate -s "front-end/customer-app/build/*" --recursive
