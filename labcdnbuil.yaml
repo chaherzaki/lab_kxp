@@ -36,4 +36,4 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az account show
-      az storage blob upload-batch --account-name storagefate --destination '$web' --source front-end/customer-app/build/*
+      az storage blob upload-batch --account-name storagefate --destination '$web' --source front-end/customer-app/build/
