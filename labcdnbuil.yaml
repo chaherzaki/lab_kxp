@@ -21,7 +21,7 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az account show
-      az storage blob upload --file /front-end/customer-app/arquivo.txt --container-name $web --name $web
+      az storage blob directory upload -c $web --account-name storagefate -s "front-end/customer-app/arquivo.txt" -d directory
 
 - task: Npm@1
   inputs:
