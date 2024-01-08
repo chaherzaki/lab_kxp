@@ -21,14 +21,7 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az account show
-
-      export AZURE_STORAGE_ACCOUNT="storagefate"
-      export AZURE_STORAGE_KEY=$(az storage account keys list --resource-group rg_fate_pgp_dev_01 --account-name storagefate --query "[0].value" -o tsv)
-
-      az storage blob upload --container-name $web --file arquivo.txt --name arquivo.txt --account-name $AZURE_STORAGE_ACCOUNT --account-key $AZURE_STORAGE_KEY
-  env:
-    AZURE_STORAGE_ACCOUNT: storagefate
-    AZURE_STORAGE_KEY: $(az storage account keys list --resource-group rg_fate_pgp_dev_01 --account-name storagefate --query "[0].value" -o tsv)
+      az storage blob upload --file /front-end/customer-app/arquivo.txt --container-name $web --name $web
 
 - task: Npm@1
   inputs:
