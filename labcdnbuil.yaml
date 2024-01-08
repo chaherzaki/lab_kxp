@@ -36,4 +36,4 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az account show
-      az storage blob upload-batch --destination '$web' --source front-end/customer-app/build/* --pattern cli-201[89]-??-??.txt
+      az storage blob upload-batch --destination '$web' --source front-end/customer-app/build/* --pattern cli-201[89]-??-??.txt --resource=true
